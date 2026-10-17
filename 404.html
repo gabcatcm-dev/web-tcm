@@ -5,6 +5,15 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>TCM Wairua – Tradiční čínská medicína ve Dvoře Králové nad Labem</title>
+<meta property="og:title" content="TCM Wairua – Tradiční čínská medicína ve Dvoře Králové nad Labem">
+<meta property="og:description" content="Tradiční čínská medicína, Access Bars, shiatsu a terapeutické masáže ve Dvoře Králové nad Labem.">
+<meta property="og:url" content="https://tcm-wairua.cz/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tcm-wairua.cz/logo-tcm.svg">
+<meta property="og:image:secure_url" content="https://tcm-wairua.cz/logo-tcm.svg">
+<meta property="og:image:type" content="image/svg+xml">
+<meta property="og:image:alt" content="Logo TCM Wairua">
+<link rel="canonical" href="https://tcm-wairua.cz/">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -429,6 +438,20 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 @media(max-width:800px){.article-hero-image{max-height:320px;margin-bottom:1.5rem}}
 
 #clanky{scroll-margin-top:82px;background:rgba(247,243,236,.92);}
+.article-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-top:2rem;text-align:left;}
+.article-choice{display:flex;flex-direction:column;gap:.7rem;padding:1.5rem;background:rgba(237,232,221,.78);border:1px solid var(--border);text-decoration:none;color:var(--ink);transition:transform .2s,border-color .2s;}
+.article-choice:hover{transform:translateY(-3px);border-color:var(--gold);}
+.article-choice strong{font:400 clamp(1.5rem,2.5vw,2rem)/1.15 'Cormorant Garamond',serif;}
+.choice-category{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+.choice-excerpt{font-size:14px;color:var(--ink-soft);font-weight:300;}
+.choice-link{margin-top:.25rem;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--moss);}
+body.route-articles #sipek-article,body.route-articles #podzimni-snidane-article{display:none;}
+body.route-sipek #articles-intro-placeholder{display:none;}
+body.route-sipek #podzimni-snidane-article,body.route-podzimni-snidane #sipek-article{display:none;}
+body.route-sipek .article-list,body.route-podzimni-snidane .article-list{display:none;}
+body.route-sipek .articles-intro,body.route-podzimni-snidane .articles-intro{display:none;}
+@media(max-width:700px){.article-list{grid-template-columns:1fr;}}
+
 .article-permalink{color:inherit;text-decoration:none;}
 .article-permalink:hover{color:var(--gold);}
 #sipek-article{scroll-margin-top:100px;}
@@ -448,7 +471,11 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 <div class="articles-intro">
 <p class="section-label">Byliny a přírodní inspirace</p>
 <h2 class="section-title">Články <em>pro vaši rovnováhu</em></h2>
-<p class="about-text">Poznatky o bylinách, tradiční čínské medicíně a přirozené péči o tělo.</p>
+<p class="about-text">Vyberte si téma, které vás zajímá. Každý článek si můžete otevřít samostatně.</p>
+<div class="article-list">
+<a class="article-choice" href="/clanky/sipek"><span class="choice-category">Byliny a příroda</span><strong>Šípek: přírodní poklad plný vitamínů</strong><span class="choice-excerpt">Poznejte šípek a jeho místo v tradičním přístupu k přirozené péči.</span><span class="choice-link">Přečíst článek ↗</span></a>
+<a class="article-choice" href="/clanky/podzimni-snidane"><span class="choice-category">Výživa podle TČM</span><strong>Podzimní snídaně podle tradiční čínské medicíny</strong><span class="choice-excerpt">Inspirace na teplé snídaně a laskavý ranní rituál v chladnějších dnech.</span><span class="choice-link">Přečíst článek ↗</span></a>
+</div>
 </div>
 <article class="article-card" id="sipek-article">
 <p class="section-label">Byliny a příroda</p>
@@ -463,7 +490,7 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 <p class="section-label">Výživa podle TČM</p>
 <h2 class="section-title"><a class="article-permalink" href="/clanky/podzimni-snidane">Podzimní snídaně podle tradiční čínské medicíny</a></h2>
 <div class="article-meta"><span>TCM Wairua</span><span>Výživa a životní styl</span></div>
-<img alt="Podzimní teplá jídla, kaše, zelenina, jablka, dýně a koření na tradičním čínském svitku" class="article-hero-image" src="/podzimni-snidane.jpg"/>
+<img alt="Podzimní teplá jídla, kaše, zelenina, jablka, dýně a koření na tradičním čínském svitku" class="article-hero-image" src="/tcm-podzimni-snidane-web.jpg"/>
 <div class="article-content">
 <p>Představte si chladné podzimní ráno. Venku se příroda pomalu ukládá k odpočinku, dny se zkracují a vzduch je stále studenější. Probudíte se, vstanete z postele a v kamnech už jen tiše dohořívají poslední uhlíky. Abyste svůj domov znovu příjemně zahřáli, potřebujete přiložit správné dřevo a nechat plameny pomalu rozhořet.</p>
 <p>Přesně tak se můžeme obrazně podívat na naše trávení z pohledu tradiční čínské medicíny. Naše trávení je jako vnitřní oheň, o který je potřeba každý den pečovat. A právě snídaně může být tím prvním přiložením, které nám pomůže začít den v klidu, s pocitem pohodlí a dostatkem energie.</p>
@@ -531,10 +558,11 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 reveals.forEach(el=>obs.observe(el));
 function submitForm(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
-const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'sipek-article','/clanky/sipek':'sipek-article','/clanky/podzimni-snidane':'podzimni-snidane-article','/kontakt':'kontakt'};
-function routeForAnchor(a){const href=a.getAttribute('href')||'';if(href==='#')return '/';if(href.startsWith('/'))return href;const id=href.slice(1);if(!id)return '/';if(id==='clanky')return '/clanky/sipek';return ({'o-mne':'/o-mne','sluzby':'/sluzby','pristup':'/pristup','kontakt':'/kontakt'})[id]||('/'+id);}
-function scrollToRoute(path,behavior='smooth'){if(path==='/'){window.scrollTo({top:0,behavior});return;}const targetId=routeTargets[path];const target=targetId&&document.getElementById(targetId);if(target)target.scrollIntoView({behavior,block:'start'});}
-document.querySelectorAll('a[href^="#"],a.article-permalink').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);});});
+const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'clanky','/clanky/sipek':'sipek-article','/clanky/podzimni-snidane':'podzimni-snidane-article','/kontakt':'kontakt'};
+function routeForAnchor(a){const href=a.getAttribute('href')||'';if(href==='#')return '/';if(href.startsWith('/'))return href;const id=href.slice(1);if(!id)return '/';if(id==='clanky')return '/clanky';return ({'o-mne':'/o-mne','sluzby':'/sluzby','pristup':'/pristup','kontakt':'/kontakt'})[id]||('/'+id);}
+function applyArticleView(path){document.body.classList.remove('route-articles','route-sipek','route-podzimni-snidane');if(path==='/clanky')document.body.classList.add('route-articles');if(path==='/clanky/sipek')document.body.classList.add('route-sipek');if(path==='/clanky/podzimni-snidane')document.body.classList.add('route-podzimni-snidane');}
+function scrollToRoute(path,behavior='smooth'){applyArticleView(path);if(path==='/'){window.scrollTo({top:0,behavior});return;}const targetId=routeTargets[path];const target=targetId&&document.getElementById(targetId);if(target)target.scrollIntoView({behavior,block:'start'});}
+document.querySelectorAll('a[href^="#"],a.article-permalink,a.article-choice').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);});});
 window.addEventListener('popstate',()=>scrollToRoute(window.location.pathname));
 if(window.location.pathname!=='/'&&routeTargets[window.location.pathname]){window.addEventListener('load',()=>setTimeout(()=>scrollToRoute(window.location.pathname,'auto'),80));}
 </script>
