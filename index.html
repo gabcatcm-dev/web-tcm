@@ -545,7 +545,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 reveals.forEach(el=>obs.observe(el));
 function submitForm(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
-const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'sipek-article','/clanky/sipek':'sipek-article','/kontakt':'kontakt'};
+const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'sipek-article','/clanky/sipek':'sipek-article','/clanky/podzimni-snidane':'podzimni-snidane-article','/kontakt':'kontakt'};
 function routeForAnchor(a){const href=a.getAttribute('href')||'';if(href==='#')return '/';if(href.startsWith('/'))return href;const id=href.slice(1);if(!id)return '/';if(id==='clanky')return '/clanky/sipek';return ({'o-mne':'/o-mne','sluzby':'/sluzby','pristup':'/pristup','kontakt':'/kontakt'})[id]||('/'+id);}
 function scrollToRoute(path,behavior='smooth'){if(path==='/'){window.scrollTo({top:0,behavior});return;}const targetId=routeTargets[path];const target=targetId&&document.getElementById(targetId);if(target)target.scrollIntoView({behavior,block:'start'});}
 document.querySelectorAll('a[href^="#"],a.article-permalink').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);});});
