@@ -440,6 +440,13 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 #clanky{scroll-margin-top:82px;background:rgba(247,243,236,.92);}
 .article-permalink{color:inherit;text-decoration:none;}
 .article-permalink:hover{color:var(--gold);}
+.article-directory{max-width:900px;margin:0 auto 2rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}
+.article-directory-link{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;border:1px solid var(--border);background:rgba(237,232,221,.55);color:var(--ink);text-decoration:none;transition:background .2s,border-color .2s;}
+.article-directory-link:hover{background:var(--paper-warm);border-color:var(--gold);}
+.article-directory-link>span:first-child{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:1.5rem;}
+.article-directory-link strong{font-weight:400;line-height:1.35;flex:1;}
+.article-directory-link .directory-arrow{color:var(--gold);font-size:1.2rem;}
+@media(max-width:700px){.article-directory{grid-template-columns:1fr;}}
 #sipek-article{scroll-margin-top:100px;}
 .articles-intro{max-width:900px;margin:0 auto 2.5rem;text-align:center;}
 .article-card{max-width:900px;margin:0 auto;background:rgba(237,232,221,.78);border:1px solid var(--border);padding:clamp(1.5rem,4vw,3.5rem);}
@@ -458,6 +465,10 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 <p class="section-label">Byliny a přírodní inspirace</p>
 <h2 class="section-title">Články <em>pro vaši rovnováhu</em></h2>
 <p class="about-text">Poznatky o bylinách, tradiční čínské medicíně a přirozené péči o tělo.</p>
+<div class="article-directory" aria-label="Vybrat článek">
+<a class="article-directory-link" href="/clanky/sipek"><span>01</span><strong>Šípek: přírodní poklad plný vitamínů</strong><span class="directory-arrow">→</span></a>
+<a class="article-directory-link" href="/clanky/snidane-podle-tcm"><span>02</span><strong>Podzimní snídaně podle tradiční čínské medicíny</strong><span class="directory-arrow">→</span></a>
+</div>
 </div>
 <article class="article-card" id="sipek-article">
 <p class="section-label">Byliny a příroda</p>
@@ -469,7 +480,7 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 
 <article class="article-card" id="podzimni-snidane-article">
 <p class="section-label">Podzim · Výživa podle TČM</p>
-<h2 class="section-title"><a class="article-permalink" href="/clanky/podzimni-snidane">Podzimní snídaně podle tradiční čínské medicíny</a></h2>
+<h2 class="section-title"><a class="article-permalink" href="/clanky/snidane-podle-tcm">Podzimní snídaně podle tradiční čínské medicíny</a></h2>
 <div class="article-meta"><span>TCM Wairua</span><span>Výživa a rovnováha</span></div>
 <img alt="Podzimní snídaně a sezónní suroviny v teplých podzimních barvách" class="article-hero-image" src="podzimni-snidane.png" loading="lazy"/>
 <div class="article-content">
@@ -545,7 +556,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 reveals.forEach(el=>obs.observe(el));
 function submitForm(){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
-const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'sipek-article','/clanky/sipek':'sipek-article','/clanky/podzimni-snidane':'podzimni-snidane-article','/kontakt':'kontakt'};
+const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'sipek-article','/clanky/sipek':'sipek-article','/clanky/snidane-podle-tcm':'podzimni-snidane-article','/kontakt':'kontakt'};
 function routeForAnchor(a){const href=a.getAttribute('href')||'';if(href==='#')return '/';if(href.startsWith('/'))return href;const id=href.slice(1);if(!id)return '/';if(id==='clanky')return '/clanky/sipek';return ({'o-mne':'/o-mne','sluzby':'/sluzby','pristup':'/pristup','kontakt':'/kontakt'})[id]||('/'+id);}
 function scrollToRoute(path,behavior='smooth'){if(path==='/'){window.scrollTo({top:0,behavior});return;}const targetId=routeTargets[path];const target=targetId&&document.getElementById(targetId);if(target)target.scrollIntoView({behavior,block:'start'});}
 document.querySelectorAll('a[href^="#"],a.article-permalink').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);});});
