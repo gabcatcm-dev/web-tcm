@@ -450,6 +450,9 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 .nav-articles>a{display:inline-flex;align-items:center;gap:.35rem;}
 .nav-articles-menu{position:absolute;top:calc(100% + .65rem);left:0;z-index:1000;min-width:230px;padding:.45rem;background:var(--paper-warm);border:1px solid var(--border);box-shadow:0 12px 28px rgba(30,24,18,.12);}
 .nav-articles-menu[hidden]{display:none;}
+.nav-articles>a[aria-expanded="true"]+.nav-articles-menu{display:block!important;visibility:visible;opacity:1;pointer-events:auto;}
+.nav-articles-menu{display:block;visibility:visible;opacity:1;pointer-events:auto;}
+.nav-articles-menu[hidden]{display:none!important;visibility:hidden;opacity:0;pointer-events:none;}
 .nav-articles:hover .nav-articles-menu,.nav-articles:focus-within .nav-articles-menu{display:block;}
 .nav-articles-menu a{display:block;padding:.8rem 1rem;color:var(--ink);text-decoration:none;white-space:nowrap;}
 .nav-articles-menu a:hover,.nav-articles-menu a:focus{background:rgba(190,155,93,.12);color:var(--gold);}
@@ -575,11 +578,12 @@ function routeForAnchor(a){const href=a.getAttribute('href')||'';if(href==='#')r
 function scrollToRoute(path,behavior='smooth'){if(path==='/'){window.scrollTo({top:0,behavior});return;}const targetId=routeTargets[path];const target=targetId&&document.getElementById(targetId);if(target)target.scrollIntoView({behavior,block:'start'});}
 const articlesToggle=document.getElementById('articles-menu-toggle');
 const articlesMenu=document.getElementById('articles-menu');
-articlesToggle?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const opening=articlesMenu.hidden;articlesMenu.hidden=!opening;articlesToggle.setAttribute('aria-expanded',String(opening));});
+function closeArticlesMenu(){if(!articlesMenu||!articlesToggle)return;articlesMenu.hidden=true;articlesToggle.setAttribute('aria-expanded','false');}
+articlesToggle?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const opening=articlesToggle.getAttribute('aria-expanded')!=='true';articlesMenu.hidden=!opening;articlesToggle.setAttribute('aria-expanded',String(opening));});
 articlesMenu?.addEventListener('click',e=>e.stopPropagation());
-document.addEventListener('click',e=>{if(!e.target.closest('.nav-articles')){articlesMenu.hidden=true;articlesToggle.setAttribute('aria-expanded','false');}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){articlesMenu.hidden=true;articlesToggle.setAttribute('aria-expanded','false');articlesToggle.focus();}});
-document.querySelectorAll('a[href^="#"],a.article-permalink').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);});});
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-articles'))closeArticlesMenu();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeArticlesMenu();articlesToggle?.focus();}});
+document.querySelectorAll('a[href^="#"],a.article-permalink,a[href^="/clanky/"]').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);closeArticlesMenu();});});
 window.addEventListener('popstate',()=>scrollToRoute(window.location.pathname));
 if(window.location.pathname!=='/'&&routeTargets[window.location.pathname]){window.addEventListener('load',()=>setTimeout(()=>scrollToRoute(window.location.pathname,'auto'),80));}
 </script>
