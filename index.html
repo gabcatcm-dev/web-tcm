@@ -212,7 +212,13 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 <li><a href="#o-mne">O mně</a></li>
 <li><a href="#sluzby">Služby</a></li>
 <li><a href="#pristup">Přístup</a></li>
-<li><a href="#clanky">Články</a></li>
+<li class="nav-articles">
+<a href="#clanky" id="articles-menu-toggle" aria-haspopup="true" aria-expanded="false">Články <span aria-hidden="true">⌄</span></a>
+<div class="nav-articles-menu" id="articles-menu" hidden>
+<a href="/clanky/sipek">Šípek</a>
+<a href="/clanky/snidane-podle-tcm">Snídaně podle TČM</a>
+</div>
+</li>
 <li><a href="#kontakt">Kontakt</a></li>
 </ul>
 </nav>
@@ -440,6 +446,13 @@ footer{background:var(--ink);padding:3rem 5rem;display:flex;align-items:center;j
 #clanky{scroll-margin-top:82px;background:rgba(247,243,236,.92);}
 .article-permalink{color:inherit;text-decoration:none;}
 .article-permalink:hover{color:var(--gold);}
+.nav-articles{position:relative;}
+.nav-articles>a{display:inline-flex;align-items:center;gap:.35rem;}
+.nav-articles-menu{position:absolute;top:calc(100% + .65rem);left:0;z-index:1000;min-width:230px;padding:.45rem;background:var(--paper-warm);border:1px solid var(--border);box-shadow:0 12px 28px rgba(30,24,18,.12);}
+.nav-articles-menu[hidden]{display:none;}
+.nav-articles-menu a{display:block;padding:.8rem 1rem;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-articles-menu a:hover,.nav-articles-menu a:focus{background:rgba(190,155,93,.12);color:var(--gold);}
+@media(max-width:800px){.nav-articles-menu{left:auto;right:0;}}
 .article-directory{max-width:900px;margin:0 auto 2rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}
 .article-directory-link{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;border:1px solid var(--border);background:rgba(237,232,221,.55);color:var(--ink);text-decoration:none;transition:background .2s,border-color .2s;}
 .article-directory-link:hover{background:var(--paper-warm);border-color:var(--gold);}
@@ -559,6 +572,11 @@ function submitForm(){const t=document.getElementById('toast');t.classList.add('
 const routeTargets={'/o-mne':'o-mne','/sluzby':'sluzby','/pristup':'pristup','/clanky':'sipek-article','/clanky/sipek':'sipek-article','/clanky/snidane-podle-tcm':'podzimni-snidane-article','/kontakt':'kontakt'};
 function routeForAnchor(a){const href=a.getAttribute('href')||'';if(href==='#')return '/';if(href.startsWith('/'))return href;const id=href.slice(1);if(!id)return '/';if(id==='clanky')return '/clanky/sipek';return ({'o-mne':'/o-mne','sluzby':'/sluzby','pristup':'/pristup','kontakt':'/kontakt'})[id]||('/'+id);}
 function scrollToRoute(path,behavior='smooth'){if(path==='/'){window.scrollTo({top:0,behavior});return;}const targetId=routeTargets[path];const target=targetId&&document.getElementById(targetId);if(target)target.scrollIntoView({behavior,block:'start'});}
+const articlesToggle=document.getElementById('articles-menu-toggle');
+const articlesMenu=document.getElementById('articles-menu');
+articlesToggle?.addEventListener('click',e=>{e.preventDefault();const opening=articlesMenu.hidden;articlesMenu.hidden=!opening;articlesToggle.setAttribute('aria-expanded',String(opening));});
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-articles')){articlesMenu.hidden=true;articlesToggle.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){articlesMenu.hidden=true;articlesToggle.setAttribute('aria-expanded','false');articlesToggle.focus();}});
 document.querySelectorAll('a[href^="#"],a.article-permalink').forEach(a=>{a.addEventListener('click',e=>{const path=routeForAnchor(a);if(path.startsWith('http'))return;e.preventDefault();if(window.location.pathname!==path)history.pushState({},'',path);scrollToRoute(path);});});
 window.addEventListener('popstate',()=>scrollToRoute(window.location.pathname));
 if(window.location.pathname!=='/'&&routeTargets[window.location.pathname]){window.addEventListener('load',()=>setTimeout(()=>scrollToRoute(window.location.pathname,'auto'),80));}
