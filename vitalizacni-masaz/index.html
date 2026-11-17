@@ -3,31 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f0eb">
+<meta name="theme-color" content="#fffdfb">
 <title>Vitalizační masáž – 45 minut</title>
-<meta name="description" content="Poznejte vitalizační masáž, její průběh a možnosti objednání.">
+<meta name="description" content="Vitalizační masáž – popis, průběh a objednání.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#403833;--muted:#766b64;--rose:#bd9185;--paper:#fffdfa;--wash:#f7f0eb;--line:#eaded6}
-*{box-sizing:border-box}body{margin:0;padding:28px 16px;color:var(--ink);background:linear-gradient(145deg,#f7f0eb,#fdfaf7 55%,#f4e8e2);font-family:Georgia,"Times New Roman",serif;line-height:1.75}
-main{max-width:760px;margin:0 auto}.card{background:rgba(255,253,250,.97);border:1px solid var(--line);border-radius:24px;padding:clamp(25px,6vw,58px);box-shadow:0 18px 55px rgba(83,61,48,.08)}
-.ornament{text-align:center;color:var(--rose);font-size:25px;letter-spacing:.3em;margin-bottom:10px}
-h1{text-align:center;font-weight:normal;font-style:italic;font-size:clamp(30px,6vw,43px);line-height:1.2;margin:0 0 8px}
-.duration{text-align:center;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font:12px/1.5 Arial,sans-serif;margin-bottom:34px}
-p{font-size:17px;margin:0 0 19px}.quote{margin:34px 0;padding:22px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;color:#8b6d63;font-size:20px;font-style:italic}
-.contact{margin-top:32px;padding:25px;background:var(--wash);border-radius:17px;text-align:center}h2{font-size:21px;font-weight:normal;font-style:italic;margin:0 0 10px}
-a{color:#805e54;text-decoration:none;border-bottom:1px solid #c9aaa0}.contact p{margin:5px 0;font-size:16px}footer{text-align:center;color:var(--muted);font:12px Arial,sans-serif;margin-top:25px}
-@media(max-width:480px){body{padding:14px 10px}.card{border-radius:18px}p{font-size:16px}}
+*{box-sizing:border-box}
+:root{--ink:#211b19;--soft:#f3e7df;--soft2:#f8eee8}
+body{margin:0;min-height:100vh;padding:28px 18px 34px;color:var(--ink);background:#fffdfb;font-family:"Marck Script","Segoe Print","Bradley Hand",cursive;font-size:clamp(18px,2.2vw,23px);line-height:1.34;position:relative;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;z-index:0;pointer-events:none;width:270px;height:390px;opacity:.52;background-repeat:no-repeat;background-size:contain}
+body:before{left:-60px;top:-35px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 380'%3E%3Cg fill='none' stroke='%23ead5c9' stroke-width='2' opacity='.75'%3E%3Cpath d='M20 350Q100 240 105 20M65 280Q10 230 12 185M83 230Q150 195 160 140M100 165Q48 130 42 90M106 105Q160 80 175 38'/%3E%3C/g%3E%3Cg fill='%23f1e2d9' opacity='.7'%3E%3Cellipse cx='28' cy='183' rx='25' ry='58' transform='rotate(-32 28 183)'/%3E%3Cellipse cx='148' cy='151' rx='23' ry='54' transform='rotate(42 148 151)'/%3E%3Cellipse cx='48' cy='91' rx='18' ry='43' transform='rotate(-35 48 91)'/%3E%3Cellipse cx='172' cy='44' rx='18' ry='42' transform='rotate(40 172 44)'/%3E%3C/g%3E%3C/svg%3E")}
+body:after{right:-55px;bottom:-60px;transform:rotate(180deg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 380'%3E%3Cg fill='none' stroke='%23ead5c9' stroke-width='2' opacity='.75'%3E%3Cpath d='M20 350Q100 240 105 20M65 280Q10 230 12 185M83 230Q150 195 160 140M100 165Q48 130 42 90M106 105Q160 80 175 38'/%3E%3C/g%3E%3Cg fill='%23f1e2d9' opacity='.7'%3E%3Cellipse cx='28' cy='183' rx='25' ry='58' transform='rotate(-32 28 183)'/%3E%3Cellipse cx='148' cy='151' rx='23' ry='54' transform='rotate(42 148 151)'/%3E%3Cellipse cx='48' cy='91' rx='18' ry='43' transform='rotate(-35 48 91)'/%3E%3Cellipse cx='172' cy='44' rx='18' ry='42' transform='rotate(40 172 44)'/%3E%3C/g%3E%3C/svg%3E")}
+main{position:relative;z-index:1;max-width:850px;margin:0 auto}
+article{padding:0 clamp(12px,5vw,48px);text-align:center}
+h1{font-size:clamp(31px,4.4vw,45px);font-weight:400;line-height:1.15;margin:4px 0 18px}
+p{margin:0 auto 17px;max-width:790px}
+.quote{margin:42px auto 24px;max-width:760px}
+.contact{margin:0 auto;max-width:600px}
+.contact p{margin:3px auto}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-decoration-color:#d8b9aa}
+@media(max-width:520px){body{padding:22px 12px 28px;line-height:1.38}body:before,body:after{width:155px;height:235px;opacity:.35}body:before{left:-65px;top:-25px}body:after{right:-65px;bottom:-35px}article{padding:0 8px}p{margin-bottom:15px}.quote{margin-top:30px}}
 </style>
 </head>
-<body><main><article class="card">
-<div class="ornament" aria-hidden="true">✧ ❀ ✧</div>
-<h1>Vitalizační masáž</h1><div class="duration">45 minut · chvíle péče o sebe</div>
+<body><main><article>
+<h1>Vitalizační masáž – 45 minut</h1>
 <p>Vitalizační masáž vychází z principů tradiční čínské medicíny, která nahlíží na člověka jako na celek – propojení těla, mysli a energie. Cílem této masáže není jen uvolnění svalů, ale především obnovení přirozeného toku životní energie – čchi, která proudí tělem a ovlivňuje naše zdraví i vnitřní rovnováhu.</p>
 <p>Masáž je hluboce sebepečující, nikoli pouze relaxační. Masérka jemně, ale cíleně vyhledává stažené a přetížené svaly, uvolňuje ztuhlá místa a podporuje jejich regeneraci. Každé setkání je jedinečné – masáž se vždy přizpůsobuje aktuálnímu stavu a potřebám klienta, s ohledem na jeho fyzickou i energetickou rovinu.</p>
 <p>Během masáže se používají kvalitní, za studena lisované rostlinné oleje, které vyživují pokožku, podporují prohřátí a napomáhají plynulému toku energie.</p>
 <p>Vitalizační masáž je vhodná pro všechny, kdo chtějí navrátit svému tělu lehkost, pružnost a životní sílu – pro lidi fyzicky aktivní, sportovce, osoby se sedavým zaměstnáním i ty, kteří cítí, že jejich tělo potřebuje pozornost a péči.</p>
 <p>Tato masáž přináší ztišení, vnímavost a harmonii. Pomáhá tělu znovu se propojit se svým přirozeným rytmem a otevřít prostor pro klid, dech a proudění energie.</p>
 <div class="quote">„Když tělo a mysl jsou v rovnováze, energie proudí a život se stává lehčím.“</div>
-<section class="contact"><h2>Dopřejte si chvíli pro sebe</h2><p>Objednání a více informací:</p><p><a href="tel:+420774833270">+420 774 833 270</a></p><p><a href="mailto:gabcatcm@gmail.com">gabcatcm@gmail.com</a></p></section>
-<footer>Vitalizační masáž · 45 minut</footer>
+<section class="contact"><p>Objednávat se můžete na</p><p><a href="tel:+420774833270">tel: +420 774 833 270</a> nebo</p><p><a href="mailto:gabcatcm@gmail.com">e-mailu: gabcatcm@gmail.com</a></p></section>
 </article></main></body></html>
